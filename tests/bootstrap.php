@@ -1,5 +1,9 @@
 <?php
+
 declare(strict_types=1);
+
+use Cake\Core\Configure;
+
 
 /**
  * Test suite bootstrap for Mindfactory/Svgicons.
@@ -24,6 +28,7 @@ unset($findRoot);
 
 chdir($root);
 
+
 require_once $root . '/vendor/autoload.php';
 
 /**
@@ -31,13 +36,24 @@ require_once $root . '/vendor/autoload.php';
  * To customize constants and configuration remove this require
  * and define the data required by your plugin here.
  */
-require_once $root . '/vendor/cakephp/cakephp/tests/bootstrap.php';
 
-if (file_exists($root . '/config/bootstrap.php')) {
-    require $root . '/config/bootstrap.php';
+// require_once $root . '/vendor/cakephp/cakephp/tests/bootstrap.php';
 
-    return;
-}
+// TEST APP
+define('ROOT', $root . DS . 'tests' . DS . 'test_app' . DS);
+
+Configure::write('debug', true);
+Configure::write('App', [
+    'debug' => true,
+    'namespace' => 'App',
+    'paths' => [
+        'plugins' => [ROOT . 'Plugin' . DS],
+        'templates' => [ROOT . 'templates' . DS]
+    ],
+    'encoding' => 'UTF-8'
+]);
+
+
 
 /**
  * Load schema from a SQL dump file.
@@ -49,7 +65,8 @@ if (file_exists($root . '/config/bootstrap.php')) {
  * using migrations to provide schema for your plugin,
  * and using \Migrations\TestSuite\Migrator to load schema.
  */
-use Cake\TestSuite\Fixture\SchemaLoader;
+
+// use Cake\TestSuite\Fixture\SchemaLoader;
 
 // Load a schema dump file.
-(new SchemaLoader())->loadSqlFiles('tests/schema.sql', 'test');
+// (new SchemaLoader())->loadSqlFiles('tests/schema.sql', 'test');
