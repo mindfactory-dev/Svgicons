@@ -23,7 +23,7 @@ class IconHelper extends Helper
         'iconSets' => [
             'default' => 'heroicons/24/outline',
         ],
-        'pathToNodeModulesFolder' => ROOT,
+        'nodeModulesPath' => ROOT,
         'overwriteCss' => true,
     ];
 
@@ -50,7 +50,7 @@ class IconHelper extends Helper
 
         // debug($selectedIconSet);
 
-        $iconPath = rtrim($this->getConfig('pathToNodeModulesFolder'), '/') . DS . 'node_modules' . DS . $selectedIconSet . DS . $iconName . '.svg';
+        $iconPath = rtrim($this->getConfig('nodeModulesPath'), '/') . DS . 'node_modules' . DS . $selectedIconSet . DS . $iconName . '.svg';
 
         // debug($iconPath);
 

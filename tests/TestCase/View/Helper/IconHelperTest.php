@@ -117,7 +117,7 @@ class IconHelperTest extends TestCase
             'iconSets' => [
                 'provider-b' => 'provider-b'
             ],
-            'pathToNodeModulesFolder' => ROOT . 'path/to/node_modules/folder/',
+            'nodeModulesPath' => ROOT . 'path/to/node_modules/folder/',
         ]);
 
         $result = $this->Icon->get('provider-b.b-a');
@@ -133,7 +133,7 @@ class IconHelperTest extends TestCase
             'iconSets' => [
                 'provider-b' => '/provider-b/'
             ],
-            'pathToNodeModulesFolder' => ROOT . 'path/to/node_modules/folder/',
+            'nodeModulesPath' => ROOT . 'path/to/node_modules/folder/',
         ]);
 
         $result = $this->Icon->get('provider-b.b-a');
@@ -149,7 +149,7 @@ class IconHelperTest extends TestCase
             'iconSets' => [
                 'provider-b' => 'provider-b'
             ],
-            'pathToNodeModulesFolder' => ROOT . 'path/to/node_modules/folder',
+            'nodeModulesPath' => ROOT . 'path/to/node_modules/folder',
         ]);
 
         $result = $this->Icon->get('provider-b.b-a');
