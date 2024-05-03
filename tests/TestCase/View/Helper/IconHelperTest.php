@@ -290,7 +290,7 @@ class IconHelperTest extends TestCase
             'iconSets' => [
                 'provider-a' => 'provider-a'
             ],
-            'defaultCssClasses' => 'size-4'
+            'defaultCss' => 'size-4'
         ]);
 
         $result = $this->Icon->get('provider-a.real');
@@ -317,13 +317,13 @@ class IconHelperTest extends TestCase
     }
 
     /** @test */
-    public function overite_css_when_default_css_appalyed(): void
+    public function overite_css_when_default_css_applayed(): void
     {
         $this->Icon->setConfig([
             'iconSets' => [
                 'provider-a' => 'provider-a'
             ],
-            'defaultCssClasses' => 'size-4'
+            'defaultCss' => 'size-4'
         ]);
 
         $result = $this->Icon->get('provider-a.real', 'size-6');
@@ -356,7 +356,7 @@ class IconHelperTest extends TestCase
             'iconSets' => [
                 'provider-a' => 'provider-a'
             ],
-            'defaultCssClasses' => 'size-4',
+            'defaultCss' => 'size-4',
             'overwriteCss' => false,
         ]);
 

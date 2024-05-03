@@ -18,7 +18,7 @@ class IconHelper extends Helper
      * @var array<string, mixed>
      */
     protected array $_defaultConfig = [
-        'defaultCssClasses' => null,
+        'defaultCss' => null,
         'delimiter' => '.',
         'iconSets' => [
             'default' => 'heroicons/24/outline',
@@ -62,17 +62,17 @@ class IconHelper extends Helper
 
         $iconContent = file_get_contents($iconPath);
 
-        debug($iconContent);
+        // debug($iconContent);
 
         $iconContent = preg_replace('/ class=".*?"/i', '', $iconContent);
 
         if (!$cssClass) {
-            $cssClass = $this->getConfig('defaultCssClasses');
+            $cssClass = $this->getConfig('defaultCss');
         }
-        debug($this->getConfig('overwriteCss'));
+        // debug($this->getConfig('overwriteCss'));
 
-        if (!$this->getConfig('overwriteCss') and $this->getConfig('defaultCssClasses')) {
-            $cssClass = $this->getConfig('defaultCssClasses') . ' ' . $cssClass;
+        if (!$this->getConfig('overwriteCss') and $this->getConfig('defaultCss')) {
+            $cssClass = $this->getConfig('defaultCss') . ' ' . $cssClass;
         }
 
         if ($cssClass) {
@@ -80,7 +80,7 @@ class IconHelper extends Helper
         }
 
 
-        debug($iconContent);
+        // debug($iconContent);
 
         return $iconContent;
     }
