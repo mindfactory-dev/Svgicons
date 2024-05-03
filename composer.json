@@ -3,6 +3,19 @@
     "description": "Mindfactory/Svgicons plugin for CakePHP",
     "type": "cakephp-plugin",
     "license": "MIT",
+    "keywords": [
+        "php",
+        "cakephp",
+        "icons",
+        "svg",
+        "svgicons"
+    ],
+    "authors": [
+        {
+            "name": "Henrik Persson",
+            "email": "henrik.persson@mindfactory.se"
+        }
+    ],
     "require": {
         "php": ">=8.1",
         "cakephp/cakephp": "^5.0.1"
