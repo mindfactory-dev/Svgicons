@@ -157,4 +157,195 @@ class IconHelperTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
+
+    /** @test */
+    public function add_css_classes(): void
+    {
+        $this->Icon->setConfig([
+            'iconSets' => [
+                'provider-a' => 'provider-a'
+            ],
+        ]);
+
+        $result = $this->Icon->get('provider-a.real', 'size-6');
+        $expected = [
+            'svg' => [
+                'class' => 'size-6',
+                'xmlns' => 'http://www.w3.org/2000/svg',
+                'fill' => 'none',
+                'viewBox' => '0 0 24 24',
+                'stroke-width' => '1.5',
+                'stroke' => 'currentColor',
+                'aria-hidden' => 'true',
+                'data-slot' => 'icon',
+            ],
+            'path' => [
+                'stroke-linecap' => 'round',
+                'stroke-linejoin' => 'round',
+                'd' => 'M5 12h14',
+            ],
+            '/svg',
+        ];
+
+        $this->assertHtml($expected, $result);
+    }
+
+    /** @test */
+    public function no_css_classes_added(): void
+    {
+        $this->Icon->setConfig([
+            'iconSets' => [
+                'provider-a' => 'provider-a'
+            ],
+        ]);
+
+        $result = $this->Icon->get('provider-a.real');
+        $expected = [
+            'svg' => [
+                'xmlns' => 'http://www.w3.org/2000/svg',
+                'fill' => 'none',
+                'viewBox' => '0 0 24 24',
+                'stroke-width' => '1.5',
+                'stroke' => 'currentColor',
+                'aria-hidden' => 'true',
+                'data-slot' => 'icon',
+            ],
+            'path' => [
+                'stroke-linecap' => 'round',
+                'stroke-linejoin' => 'round',
+                'd' => 'M5 12h14',
+            ],
+            '/svg',
+        ];
+
+        $this->assertHtml($expected, $result);
+    }
+
+    /** @test */
+    public function css_classes_is_empty_string(): void
+    {
+        $this->Icon->setConfig([
+            'iconSets' => [
+                'provider-a' => 'provider-a'
+            ],
+        ]);
+
+        $result = $this->Icon->get('provider-a.real', '');
+        $expected = [
+            'svg' => [
+                'xmlns' => 'http://www.w3.org/2000/svg',
+                'fill' => 'none',
+                'viewBox' => '0 0 24 24',
+                'stroke-width' => '1.5',
+                'stroke' => 'currentColor',
+                'aria-hidden' => 'true',
+                'data-slot' => 'icon',
+            ],
+            'path' => [
+                'stroke-linecap' => 'round',
+                'stroke-linejoin' => 'round',
+                'd' => 'M5 12h14',
+            ],
+            '/svg',
+        ];
+
+        $this->assertHtml($expected, $result);
+    }
+
+    /** @test */
+    public function css_class_exists_on_orginal(): void
+    {
+        $this->Icon->setConfig([
+            'iconSets' => [
+                'provider-a' => 'provider-a'
+            ],
+        ]);
+
+        $result = $this->Icon->get('provider-a.real-with-class');
+        $expected = [
+            'svg' => [
+                'xmlns' => 'http://www.w3.org/2000/svg',
+                'fill' => 'none',
+                'viewBox' => '0 0 24 24',
+                'stroke-width' => '1.5',
+                'stroke' => 'currentColor',
+                'aria-hidden' => 'true',
+                'data-slot' => 'icon',
+            ],
+            'path' => [
+                'stroke-linecap' => 'round',
+                'stroke-linejoin' => 'round',
+                'd' => 'M5 12h14',
+            ],
+            '/svg',
+        ];
+
+        $this->assertHtml($expected, $result);
+    }
+
+    /** @test */
+    public function default_css_classes(): void
+    {
+        $this->Icon->setConfig([
+            'iconSets' => [
+                'provider-a' => 'provider-a'
+            ],
+            'defaultCssClasses' => 'size-4'
+        ]);
+
+        $result = $this->Icon->get('provider-a.real');
+        $expected = [
+            'svg' => [
+                'class' => 'size-4',
+                'xmlns' => 'http://www.w3.org/2000/svg',
+                'fill' => 'none',
+                'viewBox' => '0 0 24 24',
+                'stroke-width' => '1.5',
+                'stroke' => 'currentColor',
+                'aria-hidden' => 'true',
+                'data-slot' => 'icon',
+            ],
+            'path' => [
+                'stroke-linecap' => 'round',
+                'stroke-linejoin' => 'round',
+                'd' => 'M5 12h14',
+            ],
+            '/svg',
+        ];
+
+        $this->assertHtml($expected, $result);
+    }
+
+    /** @test */
+    public function css_clases_when_default_css_classes_appalyed(): void
+    {
+        $this->Icon->setConfig([
+            'iconSets' => [
+                'provider-a' => 'provider-a'
+            ],
+            'defaultCssClasses' => 'size-4'
+        ]);
+
+        $result = $this->Icon->get('provider-a.real', 'size-6');
+        $expected = [
+            'svg' => [
+                'class' => 'size-6',
+                'xmlns' => 'http://www.w3.org/2000/svg',
+                'fill' => 'none',
+                'viewBox' => '0 0 24 24',
+                'stroke-width' => '1.5',
+                'stroke' => 'currentColor',
+                'aria-hidden' => 'true',
+                'data-slot' => 'icon',
+            ],
+            'path' => [
+                'stroke-linecap' => 'round',
+                'stroke-linejoin' => 'round',
+                'd' => 'M5 12h14',
+            ],
+            '/svg',
+        ];
+
+        $this->assertHtml($expected, $result);
+    }
 }

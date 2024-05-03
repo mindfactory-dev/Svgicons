@@ -23,10 +23,11 @@ class IconHelper extends Helper
             'default' => 'heroicons/24/outline',
         ],
         'pathToNodeModulesFolder' => ROOT,
+        'defaultCssClasses' => null
     ];
 
 
-    public function get(string $icon): string
+    public function get(string $icon, string | null $cssClass = null): string
     {
 
         if (str_contains($icon, $this->getConfig('delimiter'))) {
@@ -58,6 +59,23 @@ class IconHelper extends Helper
             return '';
         }
 
-        return file_get_contents($iconPath);
+        $iconContent = file_get_contents($iconPath);
+
+        // debug($iconContent);
+
+        $iconContent = preg_replace('/ class=".*?"/i', '', $iconContent);
+
+        if (!$cssClass) {
+            $cssClass = $this->getConfig('defaultCssClasses');
+        }
+
+        if ($cssClass) {
+            $iconContent = str_replace('<svg ', '<svg class="' . $cssClass . '" ', $iconContent);
+        }
+
+
+        // debug($iconContent);
+
+        return $iconContent;
     }
 }
