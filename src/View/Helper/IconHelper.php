@@ -28,7 +28,7 @@ class IconHelper extends Helper
 
     public function get(string $icon, string | null $cssClass = null): string
     {
-
+        // Extract iconset and icon name from icon params
         if (str_contains($icon, $this->getConfig('delimiter'))) {
             $iconSet = substr($icon, 0, strrpos($icon, $this->getConfig('delimiter')));
             $iconName = substr(strrchr($icon, $this->getConfig('delimiter')), 1);
@@ -36,49 +36,39 @@ class IconHelper extends Helper
             $iconName = $icon;
             $iconSet = 'default';
         }
-        // debug($iconName);
-        // debug($iconSet);
 
+        // Load availible iconSets
         $iconSets = $this->getConfig('iconSets');
 
-        // debug($iconSets);
-        // debug($iconSets[$iconSet]);
-
+        // Get the iconset if availible and trim slaches
         $selectedIconSet = array_key_exists($iconSet, $iconSets) ? trim($iconSets[$iconSet], '/') : '';
 
-        // debug($selectedIconSet);
-
+        // Create the path to the icon and remove slashes
         $iconPath = rtrim($this->getConfig('nodeModulesPath'), '/') . DS . 'node_modules' . DS . $selectedIconSet . DS . $iconName . '.svg';
 
-        // debug($iconPath);
-
-        // debug(file_exists($iconPath));
-
+        // Returns emty if icon dosent exists
         if (!file_exists($iconPath)) {
             return '';
         }
 
+        // Get svg from file and remove any class attributes
         $iconContent = file_get_contents($iconPath);
-
-        // debug($iconContent);
-
         $iconContent = preg_replace('/ class=".*?"/i', '', $iconContent);
 
+        // Get default css if none is provided
         if (!$cssClass) {
             $cssClass = $this->getConfig('defaultCss');
         }
-        // debug($this->getConfig('overwriteCss'));
 
+        // If default css is set and css params should append
         if (!$this->getConfig('overwriteCss') and $this->getConfig('defaultCss')) {
             $cssClass = $this->getConfig('defaultCss') . ' ' . $cssClass;
         }
 
+        // Add css to svg tag
         if ($cssClass) {
             $iconContent = str_replace('<svg ', '<svg class="' . $cssClass . '" ', $iconContent);
         }
-
-
-        // debug($iconContent);
 
         return $iconContent;
     }
