@@ -20,9 +20,7 @@ class IconHelper extends Helper
     protected array $_defaultConfig = [
         'defaultCss' => null,
         'delimiter' => '.',
-        'iconSets' => [
-            'default' => 'heroicons/24/outline',
-        ],
+        'iconSets' => [],
         'nodeModulesPath' => ROOT,
         'overwriteCss' => true,
     ];

@@ -60,7 +60,7 @@ class IconHelperTest extends TestCase
     {
 
         $result = $this->Icon->get('heroicon');
-        $expected = 'svg-heroicon';
+        $expected = '';
 
         $this->assertEquals($expected, $result);
     }
