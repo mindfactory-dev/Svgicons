@@ -317,7 +317,7 @@ class IconHelperTest extends TestCase
     }
 
     /** @test */
-    public function css_clases_when_default_css_classes_appalyed(): void
+    public function overite_css_when_default_css_appalyed(): void
     {
         $this->Icon->setConfig([
             'iconSets' => [
@@ -330,6 +330,73 @@ class IconHelperTest extends TestCase
         $expected = [
             'svg' => [
                 'class' => 'size-6',
+                'xmlns' => 'http://www.w3.org/2000/svg',
+                'fill' => 'none',
+                'viewBox' => '0 0 24 24',
+                'stroke-width' => '1.5',
+                'stroke' => 'currentColor',
+                'aria-hidden' => 'true',
+                'data-slot' => 'icon',
+            ],
+            'path' => [
+                'stroke-linecap' => 'round',
+                'stroke-linejoin' => 'round',
+                'd' => 'M5 12h14',
+            ],
+            '/svg',
+        ];
+
+        $this->assertHtml($expected, $result);
+    }
+
+    /** @test */
+    public function apend_css_when_default_css_appalyed(): void
+    {
+        $this->Icon->setConfig([
+            'iconSets' => [
+                'provider-a' => 'provider-a'
+            ],
+            'defaultCssClasses' => 'size-4',
+            'overwriteCss' => false,
+        ]);
+
+        $result = $this->Icon->get('provider-a.real', 'text-white');
+        $expected = [
+            'svg' => [
+                'class' => 'size-4 text-white',
+                'xmlns' => 'http://www.w3.org/2000/svg',
+                'fill' => 'none',
+                'viewBox' => '0 0 24 24',
+                'stroke-width' => '1.5',
+                'stroke' => 'currentColor',
+                'aria-hidden' => 'true',
+                'data-slot' => 'icon',
+            ],
+            'path' => [
+                'stroke-linecap' => 'round',
+                'stroke-linejoin' => 'round',
+                'd' => 'M5 12h14',
+            ],
+            '/svg',
+        ];
+
+        $this->assertHtml($expected, $result);
+    }
+
+    /** @test */
+    public function apend_css_when_default_css_isent_appalyed(): void
+    {
+        $this->Icon->setConfig([
+            'iconSets' => [
+                'provider-a' => 'provider-a'
+            ],
+            'overwriteCss' => false,
+        ]);
+
+        $result = $this->Icon->get('provider-a.real', 'text-white');
+        $expected = [
+            'svg' => [
+                'class' => 'text-white',
                 'xmlns' => 'http://www.w3.org/2000/svg',
                 'fill' => 'none',
                 'viewBox' => '0 0 24 24',
