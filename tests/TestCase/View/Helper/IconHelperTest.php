@@ -27,6 +27,7 @@ class IconHelperTest extends TestCase
      */
     protected function setUp(): void
     {
+        error_reporting(E_ALL);
         parent::setUp();
         $view = new View();
         $this->Icon = new IconHelper($view);
@@ -45,9 +46,9 @@ class IconHelperTest extends TestCase
     }
 
     /** @test */
-    public function returns_icon_content(): void
+    public function icon_name_in_file(): void
     {
-        $this->Icon->setConfig('iconSets', ['provider-a' => 'provider-a']);
+        $this->Icon->setConfig('iconSets', ['provider-a' => 'node_modules/provider-a/{icon}.svg']);
 
         $result = $this->Icon->get('provider-a.a-a');
         $expected = 'svg-a-a';
@@ -55,6 +56,16 @@ class IconHelperTest extends TestCase
         $this->assertEquals($expected, $result);
     }
 
+    /** @test */
+    public function iconName_in_folder(): void
+    {
+        $this->Icon->setConfig('iconSets', ['provider-b' => 'node_modules/provider-b/{icon}/version.svg']);
+
+        $result = $this->Icon->get('provider-b.b-a');
+        $expected = 'svg-b-a';
+
+        $this->assertEquals($expected, $result);
+    }
     /** @test */
     public function default_icon_set_when_no_one_provided(): void
     {
@@ -68,7 +79,7 @@ class IconHelperTest extends TestCase
     /** @test */
     public function default_icon_set_when_one_is_provided(): void
     {
-        $this->Icon->setConfig('iconSets', ['default' => 'provider-a/']);
+        $this->Icon->setConfig('iconSets', ['default' => 'node_modules/provider-a/{icon}.svg']);
 
         $result = $this->Icon->get('a-a');
         $expected = 'svg-a-a';
@@ -79,6 +90,8 @@ class IconHelperTest extends TestCase
     /** @test */
     public function wrong_icon_name(): void
     {
+        $this->Icon->setConfig('iconSets', ['default' => 'node_modules/provider-a/{icon}.svg']);
+
         $result = $this->Icon->get('wrong-icon-name');
         $expected = '';
 
@@ -88,6 +101,8 @@ class IconHelperTest extends TestCase
     /** @test */
     public function wrong_provider_name(): void
     {
+        $this->Icon->setConfig('iconSets', ['default' => 'node_modules/provider-a/{icon}.svg']);
+
         $result = $this->Icon->get('wrong-provider-name.icon');
         $expected = '';
 
@@ -99,7 +114,7 @@ class IconHelperTest extends TestCase
     {
         $this->Icon->setConfig([
             'iconSets' => [
-                'provider-a' => 'provider-a'
+                'provider-a' => 'node_modules/provider-a/{icon}.svg'
             ],
             'delimiter' => '/'
         ]);
@@ -111,49 +126,16 @@ class IconHelperTest extends TestCase
     }
 
     /** @test */
-    public function node_modules_in_difrent_path(): void
-    {
-        $this->Icon->setConfig([
-            'iconSets' => [
-                'provider-b' => 'provider-b'
-            ],
-            'nodeModulesPath' => ROOT . 'path/to/node_modules/folder/',
-        ]);
-
-        $result = $this->Icon->get('provider-b.b-a');
-        $expected = 'svg-b-a';
-
-        $this->assertEquals($expected, $result);
-    }
-
-    /** @test */
     public function setting_with_slashes(): void
     {
         $this->Icon->setConfig([
             'iconSets' => [
-                'provider-b' => '/provider-b/'
+                'provider-a' => '/node_modules/provider-a/{icon}.svg'
             ],
-            'nodeModulesPath' => ROOT . 'path/to/node_modules/folder/',
         ]);
 
-        $result = $this->Icon->get('provider-b.b-a');
-        $expected = 'svg-b-a';
-
-        $this->assertEquals($expected, $result);
-    }
-
-    /** @test */
-    public function setting_without_slashes(): void
-    {
-        $this->Icon->setConfig([
-            'iconSets' => [
-                'provider-b' => 'provider-b'
-            ],
-            'nodeModulesPath' => ROOT . 'path/to/node_modules/folder',
-        ]);
-
-        $result = $this->Icon->get('provider-b.b-a');
-        $expected = 'svg-b-a';
+        $result = $this->Icon->get('provider-a.a-a');
+        $expected = 'svg-a-a';
 
         $this->assertEquals($expected, $result);
     }
@@ -163,7 +145,7 @@ class IconHelperTest extends TestCase
     {
         $this->Icon->setConfig([
             'iconSets' => [
-                'provider-a' => 'provider-a'
+                'provider-a' => 'node_modules/provider-a/{icon}.svg'
             ],
         ]);
 
@@ -195,7 +177,7 @@ class IconHelperTest extends TestCase
     {
         $this->Icon->setConfig([
             'iconSets' => [
-                'provider-a' => 'provider-a'
+                'provider-a' => 'node_modules/provider-a/{icon}.svg'
             ],
         ]);
 
@@ -226,7 +208,7 @@ class IconHelperTest extends TestCase
     {
         $this->Icon->setConfig([
             'iconSets' => [
-                'provider-a' => 'provider-a'
+                'provider-a' => 'node_modules/provider-a/{icon}.svg'
             ],
         ]);
 
@@ -257,7 +239,7 @@ class IconHelperTest extends TestCase
     {
         $this->Icon->setConfig([
             'iconSets' => [
-                'provider-a' => 'provider-a'
+                'provider-a' => 'node_modules/provider-a/{icon}.svg'
             ],
         ]);
 
@@ -288,7 +270,7 @@ class IconHelperTest extends TestCase
     {
         $this->Icon->setConfig([
             'iconSets' => [
-                'provider-a' => 'provider-a'
+                'provider-a' => 'node_modules/provider-a/{icon}.svg'
             ],
             'defaultCss' => 'size-4'
         ]);
@@ -321,7 +303,7 @@ class IconHelperTest extends TestCase
     {
         $this->Icon->setConfig([
             'iconSets' => [
-                'provider-a' => 'provider-a'
+                'provider-a' => 'node_modules/provider-a/{icon}.svg'
             ],
             'defaultCss' => 'size-4'
         ]);
@@ -354,7 +336,7 @@ class IconHelperTest extends TestCase
     {
         $this->Icon->setConfig([
             'iconSets' => [
-                'provider-a' => 'provider-a'
+                'provider-a' => 'node_modules/provider-a/{icon}.svg'
             ],
             'defaultCss' => 'size-4',
             'overwriteCss' => false,
@@ -388,7 +370,7 @@ class IconHelperTest extends TestCase
     {
         $this->Icon->setConfig([
             'iconSets' => [
-                'provider-a' => 'provider-a'
+                'provider-a' => 'node_modules/provider-a/{icon}.svg'
             ],
             'overwriteCss' => false,
         ]);

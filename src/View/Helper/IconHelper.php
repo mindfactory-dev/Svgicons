@@ -21,7 +21,6 @@ class IconHelper extends Helper
         'defaultCss' => null,
         'delimiter' => '.',
         'iconSets' => [],
-        'nodeModulesPath' => ROOT,
         'overwriteCss' => true,
     ];
 
@@ -40,13 +39,23 @@ class IconHelper extends Helper
         // Load availible iconSets
         $iconSets = $this->getConfig('iconSets');
 
-        // Get the iconset if availible and trim slaches
-        $selectedIconSet = array_key_exists($iconSet, $iconSets) ? trim($iconSets[$iconSet], '/') : '';
+        debug($iconSets);
+
+        // Check if iconset is availible
+        if (!array_key_exists($iconSet, $iconSets)) {
+            return '';
+        }
+        // Select iconset and remove slaches
+        $selectedIconTemplate = trim($iconSets[$iconSet], '/');
+
+        debug($selectedIconTemplate);
 
         // Create the path to the icon and remove slashes
-        $iconPath = rtrim($this->getConfig('nodeModulesPath'), '/') . DS . 'node_modules' . DS . $selectedIconSet . DS . $iconName . '.svg';
+        $iconPath = ROOT .  str_replace('{icon}', $iconName, $selectedIconTemplate);
 
-        // Returns emty if icon dosent exists
+        debug($iconPath);
+
+        // Returns empty if icon dosent exists
         if (!file_exists($iconPath)) {
             return '';
         }
