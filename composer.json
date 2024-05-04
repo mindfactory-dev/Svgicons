@@ -1,6 +1,6 @@
 {
     "name": "mindfactory/cakephp-svgicons",
-    "description": "Mindfactory/Svgicons plugin for CakePHP",
+    "description": "SVG icon helper plugin for CakePHP",
     "type": "cakephp-plugin",
     "license": "MIT",
     "keywords": [
