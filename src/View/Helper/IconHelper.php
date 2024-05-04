@@ -39,8 +39,6 @@ class IconHelper extends Helper
         // Load availible iconSets
         $iconSets = $this->getConfig('iconSets');
 
-        debug($iconSets);
-
         // Check if iconset is availible
         if (!array_key_exists($iconSet, $iconSets)) {
             return '';
@@ -48,12 +46,9 @@ class IconHelper extends Helper
         // Select iconset and remove slaches
         $selectedIconTemplate = trim($iconSets[$iconSet], '/');
 
-        debug($selectedIconTemplate);
-
         // Create the path to the icon and remove slashes
         $iconPath = ROOT .  str_replace('{icon}', $iconName, $selectedIconTemplate);
 
-        debug($iconPath);
 
         // Returns empty if icon dosent exists
         if (!file_exists($iconPath)) {
