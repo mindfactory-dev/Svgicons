@@ -47,7 +47,7 @@ class IconHelper extends Helper
         $selectedIconTemplate = trim($iconSets[$iconSet], '/');
 
         // Create the path to the icon and remove slashes
-        $iconPath = ROOT .  str_replace('{icon}', $iconName, $selectedIconTemplate);
+        $iconPath = rtrim(ROOT, '/') . DS . str_replace('{icon}', $iconName, $selectedIconTemplate);
 
 
         // Returns empty if icon dosent exists
