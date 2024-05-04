@@ -3,7 +3,7 @@ _CakePHP helper to use SVG icons installed with a package manager like npm_
 
 ---
 
-[Requirements](req.md) | [Installation](install.md) | [Setup](setup.md) | [Configuration](config.md) | [Usage](use.md) | Glossary
+[Requirements](req.md) | [Installation](install.md) | [Setup](setup.md) | [Configuration](config.md) | [Usage](use.md) | [Icon sets](icon-sets.md) | Glossary
 
 # Glossary
 
@@ -15,4 +15,4 @@ A collection of SVG icons published together. Like [heroicons](https://heroicons
 
 ---
 
-[Requirements](req.md) | [Installation](install.md) | [Setup](setup.md) | [Configuration](config.md) | [Usage](use.md) | Glossary
+[Requirements](req.md) | [Installation](install.md) | [Setup](setup.md) | [Configuration](config.md) | [Usage](use.md) | [Icon sets](icon-sets.md) | Glossary

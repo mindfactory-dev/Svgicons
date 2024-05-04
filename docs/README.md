@@ -3,7 +3,7 @@ _CakePHP helper to use SVG icons installed with a package manager like npm_
 
 ---
 
-[Requirements](req.md) | [Installation](install.md) | [Setup](setup.md) | [Configuration](config.md) | [Usage](use.md) | [Glossary](glos.md)
+[Requirements](req.md) | [Installation](install.md) | [Setup](setup.md) | [Configuration](config.md) | [Usage](use.md) | [Icon sets](icon-sets.md) | [Icon sets](icon-sets.md) | [Glossary](glos.md)
 
 # Quick setup
 
@@ -32,4 +32,4 @@ Use the helper
 
 ---
 
-[Requirements](req.md) | [Installation](install.md) | [Setup](setup.md) | [Configuration](config.md) | [Usage](use.md) | [Glossary](glos.md)
+[Requirements](req.md) | [Installation](install.md) | [Setup](setup.md) | [Configuration](config.md) | [Usage](use.md) | [Icon sets](icon-sets.md) | [Icon sets](icon-sets.md) | [Glossary](glos.md)

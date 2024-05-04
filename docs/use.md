@@ -3,11 +3,11 @@ _CakePHP helper to use SVG icons installed with a package manager like npm_
 
 ---
 
-[Requirements](req.md) | [Installation](install.md) | [Setup](setup.md) | [Configuration](config.md) | Usage | [Glossary](glos.md)
+[Requirements](req.md) | [Installation](install.md) | [Setup](setup.md) | [Configuration](config.md) | [Icon sets](icon-sets.md) | Usage | [Glossary](glos.md)
 
 # Usage
 
-Use the icon helper in views, elements, or layouts. For more information, see the helper documentation in [the coockbook](https://book.cakephp.org/5/en/views/helpers.html)
+Use the icon helper in views, elements, or layouts. For more information, see the helper documentation in [the cookbook](https://book.cakephp.org/5/en/views/helpers.html)
 
 To use the icon helper with the default library or icon set.
 
@@ -21,7 +21,7 @@ Use the icon helper with an icon set defined
 <?= $this-Icon->get('iconSet.iconName') ?>
 ```
 
-Use the icon helper with CSS added to svg tag, like size or color properties.
+Use the icon helper with CSS added to the SVG tag, like size or color properties.
 
 ```php
 <?= $this-Icon->get('iconSet.iconName', 'cssclasses') ?>
@@ -34,7 +34,7 @@ Use the icon helper with CSS added to svg tag, like size or color properties.
 </svg>
 ```
 
-## Senarios
+## Scenarios
 
 ### One Icon set
 
@@ -172,4 +172,4 @@ We use [Material Icons](https://fonts.google.com/icons) as an example
 
 ---
 
-[Requirements](req.md) | [Installation](install.md) | [Setup](setup.md) | [Configuration](config.md) | Usage | [Glossary](glos.md)
+[Requirements](req.md) | [Installation](install.md) | [Setup](setup.md) | [Configuration](config.md) | Usage | [Icon sets](icon-sets.md) | [Glossary](glos.md)

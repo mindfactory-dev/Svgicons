@@ -3,7 +3,7 @@ _CakePHP helper to use SVG icons installed with a package manager like npm_
 
 ---
 
-[Requirements](req.md) | [Installation](install.md) | Setup] | [Configuration](config.md) | [Usage](use.md) | [Glossary](glos.md)
+[Requirements](req.md) | [Installation](install.md) | Setup] | [Configuration](config.md) | [Usage](use.md) | [Icon sets](icon-sets.md) | [Glossary](glos.md)
 
 # Setup
 
@@ -16,8 +16,7 @@ It requires additional settings so it will be a lot to type if you want to load 
 // src/View/appView.php
 
  $this->addHelper('Mindfactory/Svgicons.Icon', [
-        ...
-    ],
+    ...
 ]);
 ```
 
@@ -62,4 +61,4 @@ See the [Configuration](config.md) section for more details.
 
 ---
 
-[Requirements](req.md) | [Installation](install.md) | Setup | [Configuration](config.md) | [Usage](use.md) | [Glossary](glos.md)
+[Requirements](req.md) | [Installation](install.md) | Setup | [Configuration](config.md) | [Usage](use.md) | [Icon sets](icon-sets.md) | [Glossary](glos.md)
