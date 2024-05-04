@@ -1,4 +1,4 @@
-**\_Mindfactory/Svgicons **  
+**_Mindfactory/Svgicons_**  
 _CakePHP helper to use SVG icons installed with a package manager like npm_
 
 # Quick setup
