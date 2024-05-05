@@ -12,10 +12,11 @@ The following icon sets are tested to work.
 js = Available bu JavasScript install as npm  
 c = Available in Composer
 
-## [Heroicons](https://heroicons.com) [ js ]
+- [Heroicons](#heroicons)
 
-Beautiful hand-crafted SVG icons, by the makers of Tailwind CSS.
-A set of 450+ free MIT-licensed SVG icons. Available as basic SVG icons and via first-party React and Vue libraries.
+## Heroicons
+
+*https://heroicons.com (2.1.3) [ js ]*
 
 ### Installation
 
@@ -43,6 +44,32 @@ $this->addHelper('Mindfactory/Svgicons.Icon', [
 <?= $this->Icon->get('tailwind.solid.iconName') ?>
 <?= $this->Icon->get('tailwind.mini.iconName') ?>
 <?= $this->Icon->get('tailwind.micro.iconName') ?>
+```
+
+## Lucide
+
+*https://lucide.dev (0.378.0) [ js ]*
+
+### Installation
+
+```
+npm install lucide-static
+```
+
+### Configuration
+
+```php
+$this->addHelper('Mindfactory/Svgicons.Icon', [
+    'iconSets' => [
+        'lucide' => 'node_modules/lucide-static/icons/{icon}.svg',
+    ],
+]);
+```
+
+### Usage
+
+```php
+<?= $this->Icon->get('lucide.iconName') ?>
 ```
 
 ---
