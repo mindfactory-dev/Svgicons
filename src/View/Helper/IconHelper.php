@@ -71,7 +71,7 @@ class IconHelper extends Helper
 
         // Add css to svg tag
         if ($cssClass) {
-            $iconContent = str_replace('<svg ', '<svg class="' . $cssClass . '" ', $iconContent);
+            $iconContent = str_replace('<svg', '<svg class="' . $cssClass . '"', $iconContent);
         }
 
         return $iconContent;

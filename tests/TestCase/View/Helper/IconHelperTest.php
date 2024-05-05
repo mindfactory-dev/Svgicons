@@ -397,4 +397,36 @@ class IconHelperTest extends TestCase
 
         $this->assertHtml($expected, $result);
     }
+
+    /** @test */
+    public function when_svg_attributs_on_seperate_rows(): void
+    {
+        $this->Icon->setConfig([
+            'iconSets' => [
+                'provider-a' => 'node_modules/provider-a/{icon}.svg'
+            ],
+        ]);
+
+        $result = $this->Icon->get('provider-a.real-seperate-rows', 'size-6');
+        $expected = [
+            'svg' => [
+                'class' => 'size-6',
+                'xmlns' => 'http://www.w3.org/2000/svg',
+                'fill' => 'none',
+                'viewBox' => '0 0 24 24',
+                'stroke-width' => '1.5',
+                'stroke' => 'currentColor',
+                'aria-hidden' => 'true',
+                'data-slot' => 'icon',
+            ],
+            'path' => [
+                'stroke-linecap' => 'round',
+                'stroke-linejoin' => 'round',
+                'd' => 'M5 12h14',
+            ],
+            '/svg',
+        ];
+
+        $this->assertHtml($expected, $result);
+    }
 }
