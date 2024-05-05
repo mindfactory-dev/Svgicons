@@ -88,8 +88,6 @@ class IconHelperRealIconsTest extends TestCase
 
         $result = $this->Icon->get('realicons.lucide', 'size-6');
 
-        debug($result);
-
         $expected = [
             '<!-- @license lucide-static v0.378.0 - ISC --',
             'svg' => [
@@ -116,7 +114,7 @@ class IconHelperRealIconsTest extends TestCase
     }
 
     /** @test */
-    public function foo(): void
+    public function materialDesign(): void
     {
         $this->Icon->setConfig([
             'iconSets' => [
@@ -124,49 +122,20 @@ class IconHelperRealIconsTest extends TestCase
             ],
         ]);
 
-        $result = $this->Icon->get('realicons.lucide', 'size-6');
-
-        $result = <<<HTML
-        <!-- @license lucide-static v0.378.0 - ISC -->
-        <svg
-            class="size-6"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            >
-            <path d="M3.5 13h6" />
-            <path d="m2 16 4.5-9 4.5 9" />
-            <path d="M18 7v9" />
-            <path d="m14 12 4 4 4-4" />
-        </svg>
-    HTML;
+        $result = $this->Icon->get('realicons.material-design', 'size-6');
 
         $expected = [
-            '<!-- @license lucide-static v0.378.0 - ISC --',
             'svg' => [
                 'class' => 'size-6',
                 'xmlns' => 'http://www.w3.org/2000/svg',
                 'width' => '24',
                 'height' => '24',
                 'viewBox' => '0 0 24 24',
-                'fill' => 'none',
-                'stroke' => 'currentColor',
-                'stroke-width' => '2',
-                'stroke-linecap' => 'round',
-                'stroke-linejoin' => 'round',
             ],
-            ['path' => ['d' => 'M3.5 13h6']],
-            ['path' => ['d' => 'm2 16 4.5-9 4.5 9']],
-            ['path' => ['d' => 'M18 7v9',]],
-            ['path' => ['d' => 'm14 12 4 4 4-4',]],
+            ['path' => ['d' => 'M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 15H7.5v-4.5H6V9h3v6zm4.75 0L12 12.75V15h-1.5V9H12v2.25L13.75 9h1.75l-2.25 3 2.25 3h-1.75zm5.75-2.5H18V14h-1v-1.5h-1.5v-1H17V10h1v1.5h1.5v1z']],
             '/svg',
         ];
+
 
         $this->assertHtml($expected, $result);
     }
