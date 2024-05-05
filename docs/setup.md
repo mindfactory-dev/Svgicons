@@ -24,6 +24,8 @@ It requires additional settings so it will be a lot to type if you want to load 
 
 You must have one icon set configured.
 
+We have provided examples of some common libraries [here](icon-sets.md).
+
 The key is the name you use to invoke the right icon set when you get the icon.  
 If you use default as a key, you only have to specify an icon name when you get the icon.
 
