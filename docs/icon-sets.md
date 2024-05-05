@@ -13,6 +13,7 @@ js = Available bu JavasScript install as npm
 c = Available in Composer
 
 - [Heroicons](#heroicons)
+- [Lucide](#lucide)
 
 ## Heroicons
 
