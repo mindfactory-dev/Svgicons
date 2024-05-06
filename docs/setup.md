@@ -34,7 +34,8 @@ If you use default as a key, you only have to specify an icon name when you get 
 
  $this->addHelper('Mindfactory/Svgicons.Icon', [
     'iconSets' => [
-        'default' => '/path/to/{icon}.svg',
+        'default' => [
+            'svg' => '/path/to/{icon}.svg'],
     ],
 ]);
 ```
@@ -48,7 +49,8 @@ If you use default as a key, you only have to specify an icon name when you get 
 
  $this->addHelper('Mindfactory/Svgicons.Icon', [
     'iconSets' => [
-        'default' => 'node_modules/lucide-static/icons/{icon}.svg',
+        'default' => [
+            'svg' => 'node_modules/lucide-static/icons/{icon}.svg'],
     ],
 ]);
 ```

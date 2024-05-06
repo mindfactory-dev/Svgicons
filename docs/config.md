@@ -59,7 +59,8 @@ Use the icon name as the key and make sure to use `{icon}` in the path, it will 
 
  $this->addHelper('Mindfactory/Svgicons.Icon', [
     'iconSets' => [
-        'iconSetName' => '/path/to/{icon}.svg',
+        'iconSetName' => [
+            'svg' => '/path/to/{icon}.svg'],
     ],
 ]);
 ```

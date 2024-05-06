@@ -30,10 +30,18 @@ npm install heroicons
 ```php
 $this->addHelper('Mindfactory/Svgicons.Icon', [
     'iconSets' => [
-        'tailwind.outline' => 'node_modules/heroicons/24/outline/{icon}.svg',
-        'tailwind.solid' => 'node_modules/heroicons/24/solid/{icon}.svg',
-        'tailwind.mini' => 'node_modules/heroicons/20/solid/{icon}.svg',
-        'tailwind.micro' => 'node_modules/heroicons/16/solid/{icon}.svg',
+        'tailwind.outline' => [
+            'svg' => 'node_modules/heroicons/24/outline/{icon}.svg'
+        ],
+        'tailwind.solid' => [
+            'svg' => 'node_modules/heroicons/24/solid/{icon}.svg'
+        ],
+        'tailwind.mini' => [
+            'svg' => 'node_modules/heroicons/20/solid/{icon}.svg'
+        ],
+        'tailwind.micro' => [
+            'svg' => 'node_modules/heroicons/16/solid/{icon}.svg'
+        ],
     ],
 ]);
 ```

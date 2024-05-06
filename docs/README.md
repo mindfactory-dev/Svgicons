@@ -19,7 +19,8 @@ Add the helper.
 
  $this->addHelper('Mindfactory/Svgicons.Icon', [
     'iconSets' => [
-        'default' => '/path/to/{icon}.svg',
+        'default' => [
+            'svg' => '/path/to/{icon}.svg'],
     ],
 ]);
 ```

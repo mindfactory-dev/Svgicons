@@ -43,7 +43,9 @@ Use the icon helper with CSS added to the SVG tag, like size or color properties
 
  $this->addHelper('Mindfactory/Svgicons.Icon', [
     'iconSets' => [
-        'default' => ROOT . 'node_modules/library/{icon}.svg',
+        'default' => [
+            'svg' => ROOT . 'node_modules/library/{icon}.svg'
+        ],
     ],
 ]);
 ```
@@ -62,9 +64,15 @@ Setup the one you use most as default and the other as more specific.
 
  $this->addHelper('Mindfactory/Svgicons.Icon', [
     'iconSets' => [
-        'default' => ROOT . 'node_modules/library/solid/{icon}.svg',
-        'solid'   => ROOT . 'node_modules/library/solid/{icon}.svg',
-        'outline' => ROOT . 'node_modules/library/outline/{icon}.svg',
+        'default' => [
+            'svg' => ROOT . 'node_modules/library/solid/{icon}.svg'
+        ],
+        'solid' => [
+            'svg' => ROOT . 'node_modules/library/solid/{icon}.svg'
+        ],
+        'outline' => [
+            'svg' => ROOT . 'node_modules/library/outline/{icon}.svg'
+        ],
     ],
 ]);
 
@@ -88,9 +96,15 @@ Setup the one you use most as default and the other as more specific.
 
  $this->addHelper('Mindfactory/Svgicons.Icon', [
     'iconSets' => [
-        'default' => ROOT . 'node_modules/library-a/{icon}.svg',
-        'solid'   => ROOT . 'node_modules/library-a/{icon}.svg',
-        'outline' => ROOT . 'node_modules/library-b/{icon}.svg',
+        'default' => [
+            'svg' => ROOT . 'node_modules/library-a/{icon}.svg'
+        ],
+        'solid' => [
+            'svg' => ROOT . 'node_modules/library-a/{icon}.svg'
+        ],
+        'outline' => [
+            'svg' => ROOT . 'node_modules/library-b/{icon}.svg'
+        ],
     ],
 ]);
 // default and solid are the same, and only one is required
@@ -112,13 +126,27 @@ Setup the one you use most as default and the other as more specific.
 
  $this->addHelper('Mindfactory/Svgicons.Icon', [
     'iconSets' => [
-        'default'            => ROOT . 'node_modules/library-a/solid/{icon}.svg',
-        'library-a'         => ROOT . 'node_modules/library-a/solid/{icon}.svg',
-        'library-a.solid'   => ROOT . 'node_modules/library-a/solid/{icon}.svg',
-        'library-a.outline' => ROOT . 'node_modules/library-a/outline/{icon}.svg',
-        'library-b'         => ROOT . 'node_modules/library-b/outline/{icon}.svg',
-        'library-b.solid'   => ROOT . 'node_modules/library-b/outline/{icon}.svg',
-        'library-b.outline' => ROOT . 'node_modules/library-b/outline/{icon}.svg',
+        'default' => [
+            'svg' => ROOT . 'node_modules/library-a/solid/{icon}.svg'
+        ],
+        'library-a'=> [
+            'svg' => ROOT . 'node_modules/library-a/solid/{icon}.svg'
+        ],
+        'library-a.solid' => [
+            'svg' => ROOT . 'node_modules/library-a/solid/{icon}.svg'
+        ],
+        'library-a.outline' => [
+            'svg' => ROOT . 'node_modules/library-a/outline/{icon}.svg'
+        ],
+        'library-b' => [
+            'svg' => ROOT . 'node_modules/library-b/outline/{icon}.svg'
+        ],
+        'library-b.solid' => [
+            'svg' => ROOT . 'node_modules/library-b/outline/{icon}.svg'
+        ],
+        'library-b.outline' => [
+            'svg' => ROOT . 'node_modules/library-b/outline/{icon}.svg'
+        ],
     ],
 ]);
 // default, library-a, and library-a.solid are the same, and only one is required
@@ -148,12 +176,24 @@ We use [Material Icons](https://fonts.google.com/icons) as an example
 
  $this->addHelper('Mindfactory/Svgicons.Icon', [
     'iconSets' => [
-        'default' =>  ROOT . 'node_modules/@material.icons/svg/svg/{icon}/baseline.svg',
-        'baseline' => ROOT . 'node_modules/@material.icons/svg/svg/{icon}/baseline.svg',
-        'outline' =>  ROOT . 'node_modules/@material.icons/svg/svg/{icon}/outline.svg',
-        'round' =>    ROOT . 'node_modules/@material.icons/svg/svg/{icon}/round.svg',
-        'sharp' =>    ROOT . 'node_modules/@material.icons/svg/svg/{icon}/sharp.svg',
-        'twotone' =>  ROOT . 'node_modules/@material.icons/svg/svg/{icon}/twotone.svg',
+        'default' =>  [
+            'svg' => ROOT . 'node_modules/@material.icons/svg/svg/{icon}/baseline.svg'
+        ],
+        'baseline' => [
+            'svg' => ROOT . 'node_modules/@material.icons/svg/svg/{icon}/baseline.svg'
+        ],
+        'outline' =>  [
+            'svg' => ROOT . 'node_modules/@material.icons/svg/svg/{icon}/outline.svg'
+        ],
+        'round' =>    [
+            'svg' => ROOT . 'node_modules/@material.icons/svg/svg/{icon}/round.svg'
+        ],
+        'sharp' =>    [
+            'svg' => ROOT . 'node_modules/@material.icons/svg/svg/{icon}/sharp.svg'
+        ],
+        'twotone' =>  [
+            'svg' => ROOT . 'node_modules/@material.icons/svg/svg/{icon}/twotone.svg'
+        ],
         ],
 ]);
 // default and baseline are the same, and only one is required
