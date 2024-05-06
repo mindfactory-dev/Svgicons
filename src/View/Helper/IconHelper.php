@@ -43,8 +43,10 @@ class IconHelper extends Helper
         if (!array_key_exists($iconSet, $iconSets)) {
             return '';
         }
+
         // Select iconset and remove slaches
-        $selectedIconTemplate = trim($iconSets[$iconSet], '/');
+        $selectedIconTemplate = trim($iconSets[$iconSet]['svg'], '/');
+
 
         // Create the path to the icon and remove slashes
         $iconPath = rtrim(ROOT, '/') . DS . str_replace('{icon}', $iconName, $selectedIconTemplate);
