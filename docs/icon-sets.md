@@ -14,6 +14,7 @@ c = Available in Composer
 
 - [Bootstrap](#bootstrap)
 - [Font Awesome ](#font-awesome)
+- [Feather ](#feather)
 - [Heroicons](#heroicons)
 - [Lucide](#lucide)
 - [Material design](#material-design)
@@ -138,6 +139,34 @@ $this->addHelper('Mindfactory/Svgicons.Icon', [
 <?= $this->Icon->get('fontawesome.brands.iconName') ?>
 <?= $this->Icon->get('fontawesome.regular.iconName') ?>
 <?= $this->Icon->get('fontawesome.solid.iconName') ?>
+```
+
+## Feather
+
+*https://feathericons.com (4.29.0) [ npm ]*
+
+### Installation
+
+```shell
+npm install feather-icons
+```
+
+### Configuration
+
+```php
+$this->addHelper('Mindfactory/Svgicons.Icon', [
+    'iconSets' => [
+        'feather' => [
+            'svg' => 'node_modules/feather-icons/dist/icons/{icon}.svg',
+        ],
+    ],
+]);
+```
+
+### Usage
+
+```php
+<?= $this->Icon->get('feather.iconName') ?>
 ```
 
 ## Heroicons
