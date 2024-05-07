@@ -87,7 +87,7 @@ $this->addHelper('Mindfactory/Svgicons.Icon', [
 
 *https://fonts.google.com/icons (0.14.13) [ js ]*
 
-Google does not currently maintain any npm package past v3 (2016). However, they recomed this one.These are automatically updated and published using GitHub Actions. Note: Google does not monitor or vet these packages.
+Google does not currently maintain any npm package past v3 (2016). However, they recommend this one. These are automatically updated and published using GitHub Actions. Note: Google does not monitor or vet these packages.
 
 ### Installation
 
