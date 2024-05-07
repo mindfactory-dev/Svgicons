@@ -9,7 +9,7 @@ _CakePHP helper to use SVG icons installed with a package manager like npm_
 
 The following icon sets are tested to work.
 
-js = Available bu JavasScript install as npm  
+js = Available by JavasScript installer as npm  
 c = Available in Composer
 
 - [Heroicons](#heroicons)
@@ -21,7 +21,7 @@ c = Available in Composer
 
 ### Installation
 
-```
+```shell
 npm install heroicons
 ```
 
@@ -61,7 +61,7 @@ $this->addHelper('Mindfactory/Svgicons.Icon', [
 
 ### Installation
 
-```
+```shell
 npm install lucide-static
 ```
 
@@ -70,7 +70,37 @@ npm install lucide-static
 ```php
 $this->addHelper('Mindfactory/Svgicons.Icon', [
     'iconSets' => [
-        'lucide' => 'node_modules/lucide-static/icons/{icon}.svg',
+        'lucide' => [
+            'svg' => 'node_modules/lucide-static/icons/{icon}.svg'
+        ],
+    ],
+]);
+```
+
+### Usage
+
+```php
+<?= $this->Icon->get('lucide.iconName') ?>
+```
+
+## Material Design (Material Symbols, Material Icons)
+
+*https://lucide.dev (0.378.0) [ js ]*
+
+### Installation
+
+```shell
+npm install @material-design-icons/svg@latest
+```
+
+### Configuration
+
+```php
+$this->addHelper('Mindfactory/Svgicons.Icon', [
+    'iconSets' => [
+        'lucide' => [
+            'svg' => 'node_modules/lucide-static/icons/{icon}.svg'
+        ],
     ],
 ]);
 ```

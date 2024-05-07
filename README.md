@@ -8,11 +8,9 @@ composer require mindfactory/cakephp-svgicons
 bin/cake plugin load Mindfactory/Svgicons
 ```
 
-Add the helper.
+Add the helper in `src/View/appView.php`.
 
 ```php
-// src/View/appView.php
-
  $this->addHelper('Mindfactory/Svgicons.Icon', [
     'iconSets' => [
         'default' => [
@@ -21,7 +19,7 @@ Add the helper.
 ]);
 ```
 
-Use the helper
+Use the helper in your view
 
 ```php
 <?= $this-Icon->get('iconName') ?>

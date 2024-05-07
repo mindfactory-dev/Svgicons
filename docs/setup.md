@@ -9,8 +9,7 @@ _CakePHP helper to use SVG icons installed with a package manager like npm_
 
 ## Add the helper
 
-Add the helper in `appView.php` to make it available in all your views, layouts, etc.  
-It requires additional settings so it will be a lot to type if you want to load the helper where you use it.
+Add the helper in `appView.php` to make it available in all your views, layouts, etc.
 
 ```php
 // src/View/appView.php
@@ -26,7 +25,24 @@ You must have one icon set configured.
 
 We have provided examples of some common libraries [here](icon-sets.md).
 
-The key is the name you use to invoke the right icon set when you get the icon.  
+Under `iconSets` you add the name you want to use for your icon set as key.
+
+```php
+// src/View/appView.php
+
+ $this->addHelper('Mindfactory/Svgicons.Icon', [
+    'iconSets' => [
+        'iconSet' => [
+            'svg' => '/path/to/{icon}.svg'],
+    ],
+]);
+```
+
+```php
+// In your view
+<?= $this-Icon->get('iconSet.iconName') ?>
+```
+
 If you use default as a key, you only have to specify an icon name when you get the icon.
 
 ```php
@@ -38,6 +54,11 @@ If you use default as a key, you only have to specify an icon name when you get 
             'svg' => '/path/to/{icon}.svg'],
     ],
 ]);
+```
+
+```php
+// In your view
+<?= $this-Icon->get('iconName') ?>
 ```
 
 ### For example

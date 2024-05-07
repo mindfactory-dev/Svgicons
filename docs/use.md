@@ -7,7 +7,7 @@ _CakePHP helper to use SVG icons installed with a package manager like npm_
 
 # Usage
 
-Use the icon helper in views, elements, or layouts. For more information, see the helper documentation in [the cookbook](https://book.cakephp.org/5/en/views/helpers.html)
+Use the icon helper in views, elements, or layouts. For more information about using cakePHP helpers, see the documentation in [the cookbook](https://book.cakephp.org/5/en/views/helpers.html)
 
 To use the icon helper with the default library or icon set.
 
@@ -24,7 +24,7 @@ Use the icon helper with an icon set defined
 Use the icon helper with CSS added to the SVG tag, like size or color properties.
 
 ```php
-<?= $this-Icon->get('iconSet.iconName', 'cssclasses') ?>
+<?= $this-Icon->get('iconSet.iconName', 'cssClasses') ?>
 ```
 
 ```svg
@@ -99,15 +99,15 @@ Setup the one you use most as default and the other as more specific.
         'default' => [
             'svg' => ROOT . 'node_modules/library-a/{icon}.svg'
         ],
-        'solid' => [
+        'library-a' => [
             'svg' => ROOT . 'node_modules/library-a/{icon}.svg'
         ],
-        'outline' => [
+        'library-b' => [
             'svg' => ROOT . 'node_modules/library-b/{icon}.svg'
         ],
     ],
 ]);
-// default and solid are the same, and only one is required
+// default and library-a are the same, and only one is required
 ```
 
 ```php
@@ -167,7 +167,7 @@ Setup the one you use most as default and the other as more specific.
 
 ### Special folder structure
 
-Some libraries have a different folder structure and no icon name in the file.
+Some libraries have a different folder structure and have the icon name as a folder.
 
 We use [Material Icons](https://fonts.google.com/icons) as an example
 

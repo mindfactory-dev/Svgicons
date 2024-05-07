@@ -13,7 +13,7 @@ You can install this plugin into your CakePHP application using Composer.
 
 The recommended way to install composer packages is:
 
-```
+```shell
 composer require mindfactory/cakephp-svgicons
 ```
 
@@ -21,14 +21,13 @@ composer require mindfactory/cakephp-svgicons
 
 Then load the plugin using CakePHP's console in your terminal.
 
-```
+```shell
 bin/cake plugin load Mindfactory/Svgicons
 ```
 
 ## Install your icons
 
-Install your SVG icons with the package manager of your choice ([npm](https://nodejs.org/en), [yarn](https://yarnpkg.com), [composer](https://getcomposer.org)).  
-Or use some other you like.
+Install your SVG icons with the package manager of your choice ([npm](https://nodejs.org/en), [yarn](https://yarnpkg.com), [composer](https://getcomposer.org)).
 
 Make sure the package installs raw SVG files.
 
