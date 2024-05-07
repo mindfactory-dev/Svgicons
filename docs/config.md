@@ -59,19 +59,33 @@ The delimiter to separate the IconSet and the icon name
 <?= $this->icon->get('iconSet/iconName') ?>
 ```
 
-### iconSets (null)
+### iconSets (null) requierd
 
-You must have one icon set configured.
+- iconSet (null) requierd
+  - svg (null) required
+  - addFill (false)
+  - addStroke (false)
 
-Use the icon name as the key and make sure to use `{icon}` in the svg array, it will be swapped to the icon name later.
+`iconSet`  
+You must have one configured. Replace with the name you want to use. Could be anything as long it's unique.
+
+`svg`  
+The path to your icons, and make sure to use `{icon}` in the svg array, it will be swapped to the icon name later.
+
+`addFill`  
+Set to true to add fill="currentColor"
+
+`addStroke`  
+Set to true to add stroke="currentColor"
 
 ```php
 // src/View/appView.php
 
  $this->addHelper('Mindfactory/Svgicons.Icon', [
     'iconSets' => [
-        'iconSetName' => [
+        'iconSet' => [
             'svg' => '/path/to/{icon}.svg'],
+            ...
     ],
 ]);
 ```
