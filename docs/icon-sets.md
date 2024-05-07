@@ -13,6 +13,7 @@ npm = Available by JavasScript installer as npm
 c = Available in Composer
 
 - [Bootstrap](#bootstrap)
+- [Font Awesome ](#font-awesome)
 - [Heroicons](#heroicons)
 - [Lucide](#lucide)
 - [Material design](#material-design)
@@ -65,6 +66,78 @@ $this->addHelper('Mindfactory/Svgicons.Icon', [
 
 ```php
 <?= $this->Icon->get('bootstrap.iconName') ?>
+```
+
+## Font Awesome
+
+*https://fontawesome.com (6.5.2) [ c | npm ]*
+
+### Installation
+
+#### npm
+
+2024-05-07: npm version uses version 5, use composer for version 6
+
+```shell
+npm i fontawesome-free
+```
+
+#### composer
+
+```shell
+composer require fortawesome/font-awesome
+```
+
+### Configuration
+
+#### npm
+
+```php
+$this->addHelper('Mindfactory/Svgicons.Icon', [
+    'iconSets' => [
+        'fontawesome.brands' => [
+            'svg' => 'node_modules/fontawesome-free/svgs/brands/{icon}.svg',
+            'addFill' => true,
+        ],
+        'fontawesome.regular' => [
+            'svg' => 'node_modules/fontawesome-free/svgs/regular/{icon}.svg',
+            'addFill' => true,
+        ],
+        'fontawesome.solid' => [
+            'svg' => 'node_modules/fontawesome-free/svgs/solid/{icon}.svg',
+            'addFill' => true,
+        ],
+    ],
+]);
+```
+
+#### composer
+
+```php
+$this->addHelper('Mindfactory/Svgicons.Icon', [
+    'iconSets' => [
+       'fontawesome.brands' => [
+            'svg' => 'vendor/fortawesome/font-awesome/svgs/brands/{icon}.svg',
+            'addFill' => true,
+        ],
+        'fontawesome.regular' => [
+            'svg' => 'vendor/fortawesome/font-awesome/svgs/regular/{icon}.svg',
+            'addFill' => true,
+        ],
+        'fontawesome.solid' => [
+            'svg' => 'vendor/fortawesome/font-awesome/svgs/solid/{icon}.svg',
+            'addFill' => true,
+        ],
+    ],
+]);
+```
+
+### Usage
+
+```php
+<?= $this->Icon->get('fontawesome.brands.iconName') ?>
+<?= $this->Icon->get('fontawesome.regular.iconName') ?>
+<?= $this->Icon->get('fontawesome.solid.iconName') ?>
 ```
 
 ## Heroicons

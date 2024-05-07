@@ -122,4 +122,24 @@ class IconHelperRealIconsTest extends TestCase
         $this->assertStringContainsString('"currentColor"', $result);
         $this->assertStringContainsString('</svg>', $result);
     }
+
+    /** @test */
+    public function fontawesome(): void
+    {
+        $this->Icon->setConfig([
+            'iconSets' => [
+                'realicons' => [
+                    'svg' => 'node_modules/real-icons/{icon}.svg',
+                    'addFill' => true
+                ]
+            ],
+        ]);
+
+        $result = $this->Icon->get('realicons.fontawesome', 'size-6');
+
+        $this->assertStringContainsString('<svg', $result);
+        $this->assertStringContainsString('class="size-6"', $result);
+        $this->assertStringContainsString('"currentColor"', $result);
+        $this->assertStringContainsString('</svg>', $result);
+    }
 }
