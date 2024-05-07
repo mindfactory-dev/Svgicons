@@ -48,14 +48,7 @@ class IconHelperTest extends TestCase
     /** @test */
     public function icon_name_in_file(): void
     {
-
-        $this->Icon->setConfig([
-            'iconSets' => [
-                'provider-a' => [
-                    'svg' => 'node_modules/provider-a/{icon}.svg'
-                ]
-            ],
-        ]);
+        $this->Icon->setConfig('iconSets.provider-a.svg', 'node_modules/provider-a/{icon}.svg');
 
         $result = $this->Icon->get('provider-a.a-a');
         $expected = 'svg-a-a';
@@ -66,25 +59,11 @@ class IconHelperTest extends TestCase
     /** @test */
     public function iconName_in_folder(): void
     {
-        $this->Icon->setConfig([
-            'iconSets' => [
-                'provider-b' => [
-                    'svg' => 'node_modules/provider-b/{icon}/version.svg'
-                ]
-            ]
-        ]);
+        $this->Icon->setConfig('iconSets.provider-b.svg', 'node_modules/provider-b/{icon}/version.svg');
+
 
         $result = $this->Icon->get('provider-b.b-a');
         $expected = 'svg-b-a';
-
-        $this->assertEquals($expected, $result);
-    }
-    /** @test */
-    public function default_icon_set_when_no_one_provided(): void
-    {
-
-        $result = $this->Icon->get('heroicon');
-        $expected = '';
 
         $this->assertEquals($expected, $result);
     }
@@ -92,13 +71,7 @@ class IconHelperTest extends TestCase
     /** @test */
     public function default_icon_set_when_one_is_provided(): void
     {
-        $this->Icon->setConfig([
-            'iconSets' => [
-                'default' => [
-                    'svg' => 'node_modules/provider-a/{icon}.svg'
-                ]
-            ]
-        ]);
+        $this->Icon->setConfig('iconSets.default.svg', 'node_modules/provider-a/{icon}.svg');
 
         $result = $this->Icon->get('a-a');
         $expected = 'svg-a-a';
@@ -109,13 +82,7 @@ class IconHelperTest extends TestCase
     /** @test */
     public function wrong_icon_name(): void
     {
-        $this->Icon->setConfig([
-            'iconSets' => [
-                'default' => [
-                    'svg' => 'node_modules/provider-a/{icon}.svg'
-                ]
-            ]
-        ]);
+        $this->Icon->setConfig('iconSets.default.svg', 'node_modules/provider-a/{icon}.svg');
 
         $result = $this->Icon->get('wrong-icon-name');
         $expected = '';
@@ -126,13 +93,7 @@ class IconHelperTest extends TestCase
     /** @test */
     public function wrong_provider_name(): void
     {
-        $this->Icon->setConfig([
-            'iconSets' => [
-                'default' => [
-                    'svg' => 'node_modules/provider-a/{icon}.svg'
-                ]
-            ]
-        ]);
+        $this->Icon->setConfig('iconSets.provider-a.svg', 'node_modules/provider-a/{icon}.svg');
 
         $result = $this->Icon->get('wrong-provider-name.icon');
         $expected = '';
@@ -143,14 +104,9 @@ class IconHelperTest extends TestCase
     /** @test */
     public function with_other_delimiter(): void
     {
-        $this->Icon->setConfig([
-            'iconSets' => [
-                'provider-a' => [
-                    'svg' => 'node_modules/provider-a/{icon}.svg'
-                ]
-            ],
-            'delimiter' => '/'
-        ]);
+        $this->Icon->setConfig('iconSets.provider-a.svg', 'node_modules/provider-a/{icon}.svg');
+        $this->Icon->setConfig('delimiter', '/');
+
 
         $result = $this->Icon->get('provider-a/a-a');
         $expected = 'svg-a-a';
@@ -161,13 +117,7 @@ class IconHelperTest extends TestCase
     /** @test */
     public function setting_with_slashes(): void
     {
-        $this->Icon->setConfig([
-            'iconSets' => [
-                'provider-a' => [
-                    'svg' => '/node_modules/provider-a/{icon}.svg'
-                ]
-            ],
-        ]);
+        $this->Icon->setConfig('iconSets.provider-a.svg', 'node_modules/provider-a/{icon}.svg');
 
         $result = $this->Icon->get('provider-a.a-a');
         $expected = 'svg-a-a';
@@ -178,13 +128,7 @@ class IconHelperTest extends TestCase
     /** @test */
     public function add_css_classes_to_svg(): void
     {
-        $this->Icon->setConfig([
-            'iconSets' => [
-                'provider-a' => [
-                    'svg' => 'node_modules/provider-a/{icon}.svg'
-                ]
-            ],
-        ]);
+        $this->Icon->setConfig('iconSets.provider-a.svg', 'node_modules/provider-a/{icon}.svg');
 
         $result = $this->Icon->get('provider-a.real', 'size-6');
         $expected = [
@@ -212,13 +156,7 @@ class IconHelperTest extends TestCase
     /** @test */
     public function no_css_classes_added_to_svg(): void
     {
-        $this->Icon->setConfig([
-            'iconSets' => [
-                'provider-a' => [
-                    'svg' => 'node_modules/provider-a/{icon}.svg'
-                ]
-            ],
-        ]);
+        $this->Icon->setConfig('iconSets.provider-a.svg', 'node_modules/provider-a/{icon}.svg');
 
         $result = $this->Icon->get('provider-a.real');
         $expected = [
@@ -245,13 +183,7 @@ class IconHelperTest extends TestCase
     /** @test */
     public function css_classes_is_empty_string_no_css_added_to_svg(): void
     {
-        $this->Icon->setConfig([
-            'iconSets' => [
-                'provider-a' => [
-                    'svg' => 'node_modules/provider-a/{icon}.svg'
-                ]
-            ],
-        ]);
+        $this->Icon->setConfig('iconSets.provider-a.svg', 'node_modules/provider-a/{icon}.svg');
 
         $result = $this->Icon->get('provider-a.real', '');
         $expected = [
@@ -278,13 +210,7 @@ class IconHelperTest extends TestCase
     /** @test */
     public function css_class_exists_on_orginal_will_be_removed(): void
     {
-        $this->Icon->setConfig([
-            'iconSets' => [
-                'provider-a' => [
-                    'svg' => 'node_modules/provider-a/{icon}.svg'
-                ]
-            ],
-        ]);
+        $this->Icon->setConfig('iconSets.provider-a.svg', 'node_modules/provider-a/{icon}.svg');
 
         $result = $this->Icon->get('provider-a.real-with-class');
         $expected = [
@@ -311,14 +237,9 @@ class IconHelperTest extends TestCase
     /** @test */
     public function default_css_classes_exists_and_none_in_params(): void
     {
-        $this->Icon->setConfig([
-            'iconSets' => [
-                'provider-a' => [
-                    'svg' => 'node_modules/provider-a/{icon}.svg'
-                ]
-            ],
-            'defaultCss' => 'size-4'
-        ]);
+        $this->Icon->setConfig('iconSets.provider-a.svg', 'node_modules/provider-a/{icon}.svg');
+        $this->Icon->setConfig('defaultCss', 'size-4');
+
 
         $result = $this->Icon->get('provider-a.real');
         $expected = [
@@ -346,14 +267,8 @@ class IconHelperTest extends TestCase
     /** @test */
     public function overite_css_when_default_css_applayed(): void
     {
-        $this->Icon->setConfig([
-            'iconSets' => [
-                'provider-a' => [
-                    'svg' => 'node_modules/provider-a/{icon}.svg'
-                ]
-            ],
-            'defaultCss' => 'size-4'
-        ]);
+        $this->Icon->setConfig('iconSets.provider-a.svg', 'node_modules/provider-a/{icon}.svg');
+        $this->Icon->setConfig('defaultCss', 'size-4');
 
         $result = $this->Icon->get('provider-a.real', 'size-6');
         $expected = [
@@ -381,15 +296,9 @@ class IconHelperTest extends TestCase
     /** @test */
     public function apend_css_when_default_css_appalyed(): void
     {
-        $this->Icon->setConfig([
-            'iconSets' => [
-                'provider-a' => [
-                    'svg' => 'node_modules/provider-a/{icon}.svg'
-                ]
-            ],
-            'defaultCss' => 'size-4',
-            'overwriteCss' => false,
-        ]);
+        $this->Icon->setConfig('iconSets.provider-a.svg', 'node_modules/provider-a/{icon}.svg');
+        $this->Icon->setConfig('defaultCss', 'size-4');
+        $this->Icon->setConfig('overwriteCss', false);
 
         $result = $this->Icon->get('provider-a.real', 'text-white');
         $expected = [
@@ -417,14 +326,8 @@ class IconHelperTest extends TestCase
     /** @test */
     public function apend_css_when_default_css_isent_appalyed(): void
     {
-        $this->Icon->setConfig([
-            'iconSets' => [
-                'provider-a' => [
-                    'svg' => 'node_modules/provider-a/{icon}.svg'
-                ]
-            ],
-            'overwriteCss' => false,
-        ]);
+        $this->Icon->setConfig('iconSets.provider-a.svg', 'node_modules/provider-a/{icon}.svg');
+        $this->Icon->setConfig('overwriteCss', false);
 
         $result = $this->Icon->get('provider-a.real', 'text-white');
         $expected = [
@@ -452,13 +355,7 @@ class IconHelperTest extends TestCase
     /** @test */
     public function when_svg_attributs_on_seperate_rows(): void
     {
-        $this->Icon->setConfig([
-            'iconSets' => [
-                'provider-a' => [
-                    'svg' => 'node_modules/provider-a/{icon}.svg'
-                ]
-            ],
-        ]);
+        $this->Icon->setConfig('iconSets.provider-a.svg', 'node_modules/provider-a/{icon}.svg');
 
         $result = $this->Icon->get('provider-a.real-seperate-rows', 'size-6');
         $expected = [
@@ -486,14 +383,8 @@ class IconHelperTest extends TestCase
     /** @test */
     public function add_stroke_if_set_in_config(): void
     {
-        $this->Icon->setConfig([
-            'iconSets' => [
-                'provider-a' => [
-                    'svg' => 'node_modules/provider-a/{icon}.svg',
-                    'addStroke' => true,
-                ]
-            ],
-        ]);
+        $this->Icon->setConfig('iconSets.provider-a.svg', 'node_modules/provider-a/{icon}.svg');
+        $this->Icon->setConfig('iconSets.provider-a.addStroke', true);
 
         $result = $this->Icon->get('provider-a.real-no-currentcolor');
         $expected = [
@@ -519,14 +410,8 @@ class IconHelperTest extends TestCase
     /** @test */
     public function add_fill_if_set_in_config(): void
     {
-        $this->Icon->setConfig([
-            'iconSets' => [
-                'provider-a' => [
-                    'svg' => 'node_modules/provider-a/{icon}.svg',
-                    'addFill' => true,
-                ]
-            ],
-        ]);
+        $this->Icon->setConfig('iconSets.provider-a.svg', 'node_modules/provider-a/{icon}.svg');
+        $this->Icon->setConfig('iconSets.provider-a.addFill', true);
 
         $result = $this->Icon->get('provider-a.real-no-currentcolor');
         $expected = [

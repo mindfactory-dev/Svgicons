@@ -68,13 +68,7 @@ class IconHelperRealIconsTest extends TestCase
     /** @test */
     public function lucide(): void
     {
-        $this->Icon->setConfig([
-            'iconSets' => [
-                'realicons' => [
-                    'svg' => 'node_modules/real-icons/{icon}.svg'
-                ]
-            ],
-        ]);
+        $this->Icon->setConfig('iconSets.realicons.svg', 'node_modules/real-icons/{icon}.svg');
 
         $result = $this->Icon->get('realicons.lucide', 'size-6');
 
@@ -87,14 +81,8 @@ class IconHelperRealIconsTest extends TestCase
     /** @test */
     public function materialDesign(): void
     {
-        $this->Icon->setConfig([
-            'iconSets' => [
-                'realicons' => [
-                    'svg' => 'node_modules/real-icons/{icon}.svg',
-                    'addFill' => true,
-                ]
-            ],
-        ]);
+        $this->Icon->setConfig('iconSets.realicons.svg', 'node_modules/real-icons/{icon}.svg');
+        $this->Icon->setConfig('iconSets.realicons.addFill', true);
 
         $result = $this->Icon->get('realicons.material-design', 'size-6');
 
@@ -107,13 +95,7 @@ class IconHelperRealIconsTest extends TestCase
     /** @test */
     public function bootstrap(): void
     {
-        $this->Icon->setConfig([
-            'iconSets' => [
-                'realicons' => [
-                    'svg' => 'node_modules/real-icons/{icon}.svg'
-                ]
-            ],
-        ]);
+        $this->Icon->setConfig('iconSets.realicons.svg', 'node_modules/real-icons/{icon}.svg');
 
         $result = $this->Icon->get('realicons.bootstrap', 'size-6');
 
@@ -126,14 +108,8 @@ class IconHelperRealIconsTest extends TestCase
     /** @test */
     public function fontawesome(): void
     {
-        $this->Icon->setConfig([
-            'iconSets' => [
-                'realicons' => [
-                    'svg' => 'node_modules/real-icons/{icon}.svg',
-                    'addFill' => true
-                ]
-            ],
-        ]);
+        $this->Icon->setConfig('iconSets.realicons.svg', 'node_modules/real-icons/{icon}.svg');
+        $this->Icon->setConfig('iconSets.realicons.addFill', true);
 
         $result = $this->Icon->get('realicons.fontawesome', 'size-6');
 
@@ -146,14 +122,7 @@ class IconHelperRealIconsTest extends TestCase
     /** @test */
     public function feather(): void
     {
-        $this->Icon->setConfig([
-            'iconSets' => [
-                'realicons' => [
-                    'svg' => 'node_modules/real-icons/{icon}.svg',
-                    //  'addFill' => true
-                ]
-            ],
-        ]);
+        $this->Icon->setConfig('iconSets.realicons.svg', 'node_modules/real-icons/{icon}.svg');
 
         $result = $this->Icon->get('realicons.feather', 'size-6');
 
