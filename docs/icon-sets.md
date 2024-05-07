@@ -85,7 +85,9 @@ $this->addHelper('Mindfactory/Svgicons.Icon', [
 
 ## Material Design (Material Symbols, Material Icons)
 
-*https://lucide.dev (0.378.0) [ js ]*
+*https://fonts.google.com/icons (0.14.13) [ js ]*
+
+Google does not currently maintain any npm package past v3 (2016). However, they recomed this one.These are automatically updated and published using GitHub Actions. Note: Google does not monitor or vet these packages.
 
 ### Installation
 
@@ -98,8 +100,27 @@ npm install @material-design-icons/svg@latest
 ```php
 $this->addHelper('Mindfactory/Svgicons.Icon', [
     'iconSets' => [
-        'lucide' => [
-            'svg' => 'node_modules/lucide-static/icons/{icon}.svg'
+        iconSets' => [
+            'material-design.filled' => [
+                'svg' => 'node_modules/@material-design-icons/svg/filled/{icon}.svg',
+                'addFill' => true,
+            ],
+            'material-design.outlined' => [
+                'svg' => 'node_modules/@material-design-icons/svg/outlined/{icon}.svg',
+                'addFill' => true,
+            ],
+            'material-design.round' => [
+                'svg' => 'node_modules/@material-design-icons/svg/round/{icon}.svg',
+                'addFill' => true,
+            ],
+            'material-design.sharp' => [
+                'svg' => 'node_modules/@material-design-icons/svg/sharp/{icon}.svg',
+                'addFill' => true,
+            ],
+            'material-design.two-tone' => [
+                'svg' => 'node_modules/@material-design-icons/svg/two-tone/{icon}.svg',
+                'addFill' => true,
+            ],
         ],
     ],
 ]);
@@ -108,7 +129,11 @@ $this->addHelper('Mindfactory/Svgicons.Icon', [
 ### Usage
 
 ```php
-<?= $this->Icon->get('lucide.iconName') ?>
+<?= $this->Icon->get('material-design.filled.iconName') ?>
+<?= $this->Icon->get('material-design.outlined.iconName') ?>
+<?= $this->Icon->get('material-design.round.iconName') ?>
+<?= $this->Icon->get('material-design.sharp.iconName') ?>
+<?= $this->Icon->get('material-design.two-tone.iconName') ?>
 ```
 
 ---
