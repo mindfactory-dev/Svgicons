@@ -61,6 +61,16 @@ class IconHelper extends Helper
         $iconContent = file_get_contents($iconPath);
         $iconContent = preg_replace('/ class=".*?"/i', '', $iconContent);
 
+        // Add stroke if needed
+        if (array_key_exists('addStroke', $iconSets[$iconSet])) {
+            $iconContent = str_replace('<svg', '<svg stroke="currentColor"', $iconContent);
+        }
+
+        // Add fill if needed
+        if (array_key_exists('addFill', $iconSets[$iconSet])) {
+            $iconContent = str_replace('<svg', '<svg fill="currentColor"', $iconContent);
+        }
+
         // Get default css if none is provided
         if (!$cssClass) {
             $cssClass = $this->getConfig('defaultCss');

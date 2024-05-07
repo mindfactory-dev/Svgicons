@@ -50,7 +50,9 @@ class IconHelperRealIconsTest extends TestCase
     {
         $this->Icon->setConfig([
             'iconSets' => [
-                'realicons' => 'node_modules/real-icons/{icon}.svg'
+                'realicons' => [
+                    'svg' => 'node_modules/real-icons/{icon}.svg'
+                ]
             ],
         ]);
 
@@ -82,7 +84,9 @@ class IconHelperRealIconsTest extends TestCase
     {
         $this->Icon->setConfig([
             'iconSets' => [
-                'realicons' => 'node_modules/real-icons/{icon}.svg'
+                'realicons' => [
+                    'svg' => 'node_modules/real-icons/{icon}.svg'
+                ]
             ],
         ]);
 
@@ -118,7 +122,9 @@ class IconHelperRealIconsTest extends TestCase
     {
         $this->Icon->setConfig([
             'iconSets' => [
-                'realicons' => 'node_modules/real-icons/{icon}.svg'
+                'realicons' => [
+                    'svg' => 'node_modules/real-icons/{icon}.svg'
+                ]
             ],
         ]);
 

@@ -482,4 +482,70 @@ class IconHelperTest extends TestCase
 
         $this->assertHtml($expected, $result);
     }
+
+    /** @test */
+    public function add_stroke_if_set_in_config(): void
+    {
+        $this->Icon->setConfig([
+            'iconSets' => [
+                'provider-a' => [
+                    'svg' => 'node_modules/provider-a/{icon}.svg',
+                    'addStroke' => true,
+                ]
+            ],
+        ]);
+
+        $result = $this->Icon->get('provider-a.real-no-currentcolor');
+        $expected = [
+            'svg' => [
+                'xmlns' => 'http://www.w3.org/2000/svg',
+                'viewBox' => '0 0 24 24',
+                'stroke-width' => '1.5',
+                'stroke' => 'currentColor',
+                'aria-hidden' => 'true',
+                'data-slot' => 'icon',
+            ],
+            'path' => [
+                'stroke-linecap' => 'round',
+                'stroke-linejoin' => 'round',
+                'd' => 'M5 12h14',
+            ],
+            '/svg',
+        ];
+
+        $this->assertHtml($expected, $result);
+    }
+
+    /** @test */
+    public function add_fill_if_set_in_config(): void
+    {
+        $this->Icon->setConfig([
+            'iconSets' => [
+                'provider-a' => [
+                    'svg' => 'node_modules/provider-a/{icon}.svg',
+                    'addFill' => true,
+                ]
+            ],
+        ]);
+
+        $result = $this->Icon->get('provider-a.real-no-currentcolor');
+        $expected = [
+            'svg' => [
+                'xmlns' => 'http://www.w3.org/2000/svg',
+                'viewBox' => '0 0 24 24',
+                'stroke-width' => '1.5',
+                'fill' => 'currentColor',
+                'aria-hidden' => 'true',
+                'data-slot' => 'icon',
+            ],
+            'path' => [
+                'stroke-linecap' => 'round',
+                'stroke-linejoin' => 'round',
+                'd' => 'M5 12h14',
+            ],
+            '/svg',
+        ];
+
+        $this->assertHtml($expected, $result);
+    }
 }
