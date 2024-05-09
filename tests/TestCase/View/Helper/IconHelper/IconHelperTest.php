@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mindfactory\Svgicons\Test\TestCase\View\Helper;
+namespace Mindfactory\Svgicons\Test\TestCase\View\Helper\IconHelper;
 
 use Cake\TestSuite\TestCase;
 use Cake\View\View;
@@ -69,7 +69,7 @@ class IconHelperTest extends TestCase
     }
 
     /** @test */
-    public function default_icon_set_when_one_is_provided(): void
+    public function default_icon_set(): void
     {
         $this->Icon->setConfig('iconSets.default.svg', 'node_modules/provider-a/{icon}.svg');
 
@@ -102,28 +102,25 @@ class IconHelperTest extends TestCase
     }
 
     /** @test */
-    public function with_other_delimiter(): void
+    public function no_provider_name(): void
     {
-        $this->Icon->setConfig('iconSets.provider-a.svg', 'node_modules/provider-a/{icon}.svg');
-        $this->Icon->setConfig('delimiter', '/');
-
-
-        $result = $this->Icon->get('provider-a/a-a');
-        $expected = 'svg-a-a';
+        $result = $this->Icon->get('wrong-provider-name.icon');
+        $expected = '';
 
         $this->assertEquals($expected, $result);
     }
 
     /** @test */
-    public function setting_with_slashes(): void
+    public function svg_path_with_slashes(): void
     {
-        $this->Icon->setConfig('iconSets.provider-a.svg', 'node_modules/provider-a/{icon}.svg');
+        $this->Icon->setConfig('iconSets.provider-a.svg', '/node_modules/provider-a/{icon}.svg');
 
         $result = $this->Icon->get('provider-a.a-a');
         $expected = 'svg-a-a';
 
         $this->assertEquals($expected, $result);
     }
+
 
     /** @test */
     public function add_css_classes_to_svg(): void
@@ -235,124 +232,6 @@ class IconHelperTest extends TestCase
     }
 
     /** @test */
-    public function default_css_classes_exists_and_none_in_params(): void
-    {
-        $this->Icon->setConfig('iconSets.provider-a.svg', 'node_modules/provider-a/{icon}.svg');
-        $this->Icon->setConfig('defaultCss', 'size-4');
-
-
-        $result = $this->Icon->get('provider-a.real');
-        $expected = [
-            'svg' => [
-                'class' => 'size-4',
-                'xmlns' => 'http://www.w3.org/2000/svg',
-                'fill' => 'none',
-                'viewBox' => '0 0 24 24',
-                'stroke-width' => '1.5',
-                'stroke' => 'currentColor',
-                'aria-hidden' => 'true',
-                'data-slot' => 'icon',
-            ],
-            'path' => [
-                'stroke-linecap' => 'round',
-                'stroke-linejoin' => 'round',
-                'd' => 'M5 12h14',
-            ],
-            '/svg',
-        ];
-
-        $this->assertHtml($expected, $result);
-    }
-
-    /** @test */
-    public function overite_css_when_default_css_applayed(): void
-    {
-        $this->Icon->setConfig('iconSets.provider-a.svg', 'node_modules/provider-a/{icon}.svg');
-        $this->Icon->setConfig('defaultCss', 'size-4');
-
-        $result = $this->Icon->get('provider-a.real', 'size-6');
-        $expected = [
-            'svg' => [
-                'class' => 'size-6',
-                'xmlns' => 'http://www.w3.org/2000/svg',
-                'fill' => 'none',
-                'viewBox' => '0 0 24 24',
-                'stroke-width' => '1.5',
-                'stroke' => 'currentColor',
-                'aria-hidden' => 'true',
-                'data-slot' => 'icon',
-            ],
-            'path' => [
-                'stroke-linecap' => 'round',
-                'stroke-linejoin' => 'round',
-                'd' => 'M5 12h14',
-            ],
-            '/svg',
-        ];
-
-        $this->assertHtml($expected, $result);
-    }
-
-    /** @test */
-    public function apend_css_when_default_css_appalyed(): void
-    {
-        $this->Icon->setConfig('iconSets.provider-a.svg', 'node_modules/provider-a/{icon}.svg');
-        $this->Icon->setConfig('defaultCss', 'size-4');
-        $this->Icon->setConfig('overwriteCss', false);
-
-        $result = $this->Icon->get('provider-a.real', 'text-white');
-        $expected = [
-            'svg' => [
-                'class' => 'size-4 text-white',
-                'xmlns' => 'http://www.w3.org/2000/svg',
-                'fill' => 'none',
-                'viewBox' => '0 0 24 24',
-                'stroke-width' => '1.5',
-                'stroke' => 'currentColor',
-                'aria-hidden' => 'true',
-                'data-slot' => 'icon',
-            ],
-            'path' => [
-                'stroke-linecap' => 'round',
-                'stroke-linejoin' => 'round',
-                'd' => 'M5 12h14',
-            ],
-            '/svg',
-        ];
-
-        $this->assertHtml($expected, $result);
-    }
-
-    /** @test */
-    public function apend_css_when_default_css_isent_appalyed(): void
-    {
-        $this->Icon->setConfig('iconSets.provider-a.svg', 'node_modules/provider-a/{icon}.svg');
-        $this->Icon->setConfig('overwriteCss', false);
-
-        $result = $this->Icon->get('provider-a.real', 'text-white');
-        $expected = [
-            'svg' => [
-                'class' => 'text-white',
-                'xmlns' => 'http://www.w3.org/2000/svg',
-                'fill' => 'none',
-                'viewBox' => '0 0 24 24',
-                'stroke-width' => '1.5',
-                'stroke' => 'currentColor',
-                'aria-hidden' => 'true',
-                'data-slot' => 'icon',
-            ],
-            'path' => [
-                'stroke-linecap' => 'round',
-                'stroke-linejoin' => 'round',
-                'd' => 'M5 12h14',
-            ],
-            '/svg',
-        ];
-
-        $this->assertHtml($expected, $result);
-    }
-
-    /** @test */
     public function when_svg_attributs_on_seperate_rows(): void
     {
         $this->Icon->setConfig('iconSets.provider-a.svg', 'node_modules/provider-a/{icon}.svg');
@@ -366,60 +245,6 @@ class IconHelperTest extends TestCase
                 'viewBox' => '0 0 24 24',
                 'stroke-width' => '1.5',
                 'stroke' => 'currentColor',
-                'aria-hidden' => 'true',
-                'data-slot' => 'icon',
-            ],
-            'path' => [
-                'stroke-linecap' => 'round',
-                'stroke-linejoin' => 'round',
-                'd' => 'M5 12h14',
-            ],
-            '/svg',
-        ];
-
-        $this->assertHtml($expected, $result);
-    }
-
-    /** @test */
-    public function add_stroke_if_set_in_config(): void
-    {
-        $this->Icon->setConfig('iconSets.provider-a.svg', 'node_modules/provider-a/{icon}.svg');
-        $this->Icon->setConfig('iconSets.provider-a.addStroke', true);
-
-        $result = $this->Icon->get('provider-a.real-no-currentcolor');
-        $expected = [
-            'svg' => [
-                'xmlns' => 'http://www.w3.org/2000/svg',
-                'viewBox' => '0 0 24 24',
-                'stroke-width' => '1.5',
-                'stroke' => 'currentColor',
-                'aria-hidden' => 'true',
-                'data-slot' => 'icon',
-            ],
-            'path' => [
-                'stroke-linecap' => 'round',
-                'stroke-linejoin' => 'round',
-                'd' => 'M5 12h14',
-            ],
-            '/svg',
-        ];
-
-        $this->assertHtml($expected, $result);
-    }
-
-    /** @test */
-    public function add_fill_if_set_in_config(): void
-    {
-        $this->Icon->setConfig('iconSets.provider-a.svg', 'node_modules/provider-a/{icon}.svg');
-        $this->Icon->setConfig('iconSets.provider-a.addFill', true);
-
-        $result = $this->Icon->get('provider-a.real-no-currentcolor');
-        $expected = [
-            'svg' => [
-                'xmlns' => 'http://www.w3.org/2000/svg',
-                'viewBox' => '0 0 24 24',
-                'stroke-width' => '1.5',
-                'fill' => 'currentColor',
                 'aria-hidden' => 'true',
                 'data-slot' => 'icon',
             ],

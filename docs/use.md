@@ -9,6 +9,23 @@ _CakePHP helper to use SVG icons installed with a package manager like npm_
 
 Use the icon helper in views, elements, or layouts. For more information about using cakePHP helpers, see the documentation in [the cookbook](https://book.cakephp.org/5/en/views/helpers.html)
 
+Use the get method on the icon helper to retrieve your icon
+
+## Params
+
+- icon
+- css
+- options
+
+`icon`  
+The name of the icon to get
+
+`css`  
+Add CSS, such as size or color properties, to the SVG tag.
+
+`options`  
+Array of settings to add.
+
 To use the icon helper with the default library or icon set.
 
 ```php
@@ -30,6 +47,19 @@ Use the icon helper with CSS added to the SVG tag, like size or color properties
 ```svg
 //Output
 <svg class="cssClasses">
+    ...
+</svg>
+```
+
+Use the icon helper with CSS and options
+
+```php
+<?= $this-Icon->get('iconSet.iconName', 'cssClasses', ['appendCss' => true]) ?>
+```
+
+```svg
+//Output
+<svg class="oldCss cssClasses">
     ...
 </svg>
 ```

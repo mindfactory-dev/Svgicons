@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mindfactory\Svgicons\Test\TestCase\View\Helper;
+namespace Mindfactory\Svgicons\Test\TestCase\View\Helper\IconHelper;
 
 use Cake\TestSuite\TestCase;
 use Cake\View\View;
