@@ -14,13 +14,13 @@ Use the get method on the icon helper to retrieve your icon
 ## Params
 
 - icon
-- css
+- cssClass
 - options
 
 `icon`  
 The name of the icon to get
 
-`css`  
+`cssClass`  
 Add CSS, such as size or color properties, to the SVG tag.
 
 `options`  
