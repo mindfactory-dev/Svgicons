@@ -22,10 +22,10 @@ You configure the Icon helper, add an array as a second argument to `addHelper()
 Configuration options could be added in two ways.
 
 The common way is to add an array to the addHelper method.  
-Most options could be added as a parameter to the get method. Used mostly to override global settings. See [Usage section](use.md) for more information.
+Most options could be added as arguments to the get method. This method is used mostly to override global settings. See [Usage section](use.md) for more information.
 
 You could set an option in a global scope or per iconSet.
-Parameters override iconSet that overrides global settings.
+Arguments override iconSet that overrides global settings.
 
 ```php
 // src/View/appView.php
